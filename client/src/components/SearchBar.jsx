@@ -2,18 +2,28 @@ import React, { useState } from "react";
 import "../styles/sass/Search.scss";
 import { useHistory } from "react-router-dom";
 
-function SearchBar(props) {
+function SearchBar() {
   const [name, setName] = useState("");
+  const [optionsState, setOptionsState] = useState("name");
+
   let history = useHistory();
 
   const handleChange = (e) => {
     setName(e.target.value);
   };
 
+  const handleChangeSelect = (e) => {
+    setOptionsState(e.target.value);
+  };
   const handleSubmit = (e) => {
+    e.preventDefault();
+
     if (name) {
       e.preventDefault();
-      history.push(`/Search/${name}`);
+      history.push({
+        pathname: `/Search/${name}`,
+        state: { buscarPor: optionsState },
+      });
     }
   };
 
@@ -29,6 +39,13 @@ function SearchBar(props) {
             onChange={handleChange}
             placeholder="Search..."
           />
+          <select onClick={handleChangeSelect}>
+            <option defaultValue value="name">
+              Name
+            </option>
+            <option value="id">Id</option>
+          </select>
+          <button type="submit">buscar</button>
         </form>
       </div>
     </div>

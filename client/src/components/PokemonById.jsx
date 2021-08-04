@@ -1,15 +1,20 @@
 import React, { useEffect } from "react";
 import { Fragment } from "react";
 import { connect } from "react-redux";
-import { getPokemonByIdOrName } from "../redux/actions";
+import { getPokemonByName, getPokemonById } from "../redux/actions";
 import SearchBar from "./SearchBar";
 
 function PokemonById(props) {
   useEffect(() => {
-    let id = props.match.params.id;
-
-    props.getPokemonByIdOrName(id);
-  }, [props.match.params.id]); // eslint-disable-line react-hooks/exhaustive-deps
+    const SearchFor = props.location.state.buscarPor;
+    if (SearchFor === "id") {
+      let id = props.match.params.id;
+      return props.getPokemonById(id);
+    } else if (SearchFor === "name") {
+      let name = props.match.params.id;
+      return props.getPokemonByName(name);
+    }
+  }, [props.match.params]); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <Fragment>
       <h1>Henry Pokemon</h1>
@@ -40,4 +45,6 @@ function PokemonById(props) {
   );
 }
 const mapStateToProps = (state) => ({ pokemonSearch: state.pokemonSearch });
-export default connect(mapStateToProps, { getPokemonByIdOrName })(PokemonById);
+export default connect(mapStateToProps, { getPokemonByName, getPokemonById })(
+  PokemonById
+);

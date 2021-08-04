@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
         }
       })
     );
-    res.status(200).send("nooo");
+    res.status(200).send(filtrados);
   } else if (name) {
     const Search = allPokemons.filter((obj) => obj.name == name.toLowerCase());
     if (Search[0] != undefined) {
@@ -33,29 +33,27 @@ router.get("/", async (req, res) => {
       return res.json([{ name: "Error" }]);
     }
   }
-  res.send(allPokemons);
+  return res.send(allPokemons);
 });
 
 router.get("/:idPokemon", async (req, res) => {
-  const id = req.params.idPokemon;
-  if (id) {
-    if (id.length < 6) {
-      const SearchPokemonById = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${id}`
-      )
-        .then((res) => res.json())
-        .then((res) => res);
-      res.send(SearchPokemonById);
-    } else {
-      const dbPokemons = await Pokemon.findAll({ include: Type }).then(
-        (pokemon) => {
-          return pokemon;
-        }
-      );
-      const SearchInDb = dbPokemons.filter((obj) => obj.id === id);
-      res.send(SearchInDb);
-    }
-    res.send("Error");
+  let id = req.params.idPokemon;
+
+  if (id.length < 6) {
+    await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+      .then((respuesta) => respuesta.json())
+      .then((pokemon) => {
+        return res.send(pokemon);
+      });
+  } else {
+    await Pokemon.findAll({ include: Type })
+      .then((pokemon) => pokemon.filter((obj) => obj.id === id))
+      .then((dato) => {
+        return dato[0] ? res.status(200).send(dato) : res.send("error");
+      })
+      .catch(() => {
+        return res.send("Error de servidor");
+      });
   }
 });
 
@@ -76,7 +74,7 @@ router.post("/", async (req, res) => {
     img_DB,
   });
   await UploadPokemon.addTypes(type1);
-  res.send(UploadPokemon);
+  return res.send(UploadPokemon);
 });
 
 module.exports = router;

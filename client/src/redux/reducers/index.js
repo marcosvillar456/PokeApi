@@ -1,4 +1,9 @@
-import { GETPOKEMONS, SEARCHPOKEMON, FILTERPOKEMONS } from "../actions/index";
+import {
+  GETPOKEMONS,
+  FILTERPOKEMONS,
+  SEARCHPOKEMONNAME,
+  SEARCHPOKEMONID,
+} from "../actions/index";
 
 const initialState = {
   pokemons: [],
@@ -13,7 +18,12 @@ function rootReducer(state = initialState, action) {
         pokemons: action.payload,
       };
 
-    case SEARCHPOKEMON:
+    case SEARCHPOKEMONNAME:
+      return {
+        pokemonSearch: action.payload,
+      };
+
+    case SEARCHPOKEMONID:
       return {
         pokemonSearch: action.payload,
       };

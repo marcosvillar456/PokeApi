@@ -1,6 +1,7 @@
 export const GETPOKEMONS = "GETPOKEMONS";
-export const SEARCHPOKEMON = "SEARCHPOKEMON";
 export const FILTERPOKEMONS = "FILTERPOKEMONS";
+export const SEARCHPOKEMONNAME = "SEARCHPOKEMONNAME";
+export const SEARCHPOKEMONID = " SEARCHPOKEMONID";
 
 export function getpokemons() {
   return async function (dispatch) {
@@ -10,11 +11,18 @@ export function getpokemons() {
   };
 }
 
-export function getPokemonByIdOrName(id) {
+export function getPokemonByName(name) {
   return async function (dispatch) {
-    const response = await fetch(`http://localhost:3001/pokemons?name=${id}`);
+    const response = await fetch(`http://localhost:3001/pokemons?name=${name}`);
     const json = await response.json();
-    dispatch({ type: SEARCHPOKEMON, payload: json });
+    dispatch({ type: SEARCHPOKEMONNAME, payload: json });
+  };
+}
+export function getPokemonById(id) {
+  return async function (dispatch) {
+    const response = await fetch(`http://localhost:3001/pokemons/${id}`);
+    const json = await response.json();
+    dispatch({ type: SEARCHPOKEMONID, payload: json });
   };
 }
 
