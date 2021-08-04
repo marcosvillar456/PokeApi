@@ -15,7 +15,6 @@ router.get("/", async (req, res) => {
   );
   const apiPokemons = await getpokemonsApi();
   const allPokemons = apiPokemons.concat(dbpokemons);
-  console.log(req.query);
   if (type) {
     const filtrados = [];
     allPokemons.map((obj) =>
@@ -25,12 +24,16 @@ router.get("/", async (req, res) => {
         }
       })
     );
-    res.status(200).send(filtrados);
+    res.status(200).send("nooo");
   } else if (name) {
-    const Search = allPokemons.filter((obj) => obj.name == name);
-    res.send(Search);
+    const Search = allPokemons.filter((obj) => obj.name == name.toLowerCase());
+    if (Search[0] != undefined) {
+      return res.send(Search);
+    } else {
+      return res.json([{ name: "Error" }]);
+    }
   }
-  return res.send("Error al buscar");
+  res.send(allPokemons);
 });
 
 router.get("/:idPokemon", async (req, res) => {
@@ -52,6 +55,7 @@ router.get("/:idPokemon", async (req, res) => {
       const SearchInDb = dbPokemons.filter((obj) => obj.id === id);
       res.send(SearchInDb);
     }
+    res.send("Error");
   }
 });
 

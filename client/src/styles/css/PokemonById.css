@@ -1,0 +1,108 @@
+.card_pokemon {
+  margin: 2rem;
+  width: 200px;
+  height: 250px;
+  border: 1px solid;
+  border-radius: 20px;
+  margin: auto;
+}
+.card_pokemon img {
+  height: 80px;
+}
+.card_pokemon .Name_Pokemon {
+  font-size: 20px;
+  text-transform: capitalize;
+  color: black;
+  font-weight: bold;
+}
+.card_pokemon .container_type {
+  padding-top: 3rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+.card_pokemon .container_type .type {
+  width: 70px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.card_pokemon .container_type .normal {
+  background-color: peru;
+}
+.card_pokemon .container_type .fire {
+  background-color: #f95757;
+}
+.card_pokemon .container_type .bug {
+  background-color: #9af99a;
+}
+.card_pokemon .container_type .ground {
+  background-color: peru;
+}
+.card_pokemon .container_type .grass {
+  background-color: #9af99a;
+}
+.card_pokemon .container_type .poison {
+  background-color: violet;
+}
+.card_pokemon .container_type .flying {
+  background-color: lightblue;
+}
+.card_pokemon .container_type .water {
+  background-color: #a0a0f5;
+}
+.card_pokemon .container_type .electric {
+  background-color: yellow;
+}
+.card_pokemon .container_type .dark {
+  background-color: #464644;
+}
+.card_pokemon .container_type .ice {
+  background-color: #b9d5ef;
+}
+
+.fire_bg {
+  background: url("../../assets//fire.jfif");
+  background-size: cover;
+}
+
+.bug_bg {
+  background: url("../../assets//bug.png");
+  background-size: cover;
+}
+
+.poison_bg {
+  background: url("../../assets//poison.png");
+  background-size: cover;
+}
+
+.ground_bg {
+  background: url("../../assets//ground.jfif") center top;
+  background-size: cover;
+}
+
+.grass_bg {
+  background: url("../../assets//grass.jfif") center top;
+  background-size: cover;
+}
+
+.water_bg {
+  background: url("../../assets//water.jfif") center top;
+  background-size: cover;
+}
+
+.flying_bg {
+  background: url("../../assets//flying.jfif") center top;
+  background-size: cover;
+}
+
+.electric_bg {
+  background: url("../../assets//electry.jfif") center top;
+  background-size: cover;
+}
+
+.normal_bg {
+  background: url("../../assets//normal.jfif") center top;
+  background-size: cover;
+}
+
+/*# sourceMappingURL=PokemonById.css.map */
