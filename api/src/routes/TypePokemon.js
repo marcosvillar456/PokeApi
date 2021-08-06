@@ -5,7 +5,7 @@ const { getTypes } = require("../Servicios/funciones");
 const router = Router();
 
 router.get("/", async (req, res) => {
-  const tamaño = await Type.findAll();
+  const tamaño = Type.findAll();
   if (!tamaño.length) {
     const Names = await getTypes();
     const uploadTypes = await Type.bulkCreate(Names);
@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
     });
     return res.send(NamesTypes);
   } else {
-    const uploadTypes = await tamaño.map((type) => {
+    const uploadTypes = tamaño.map((type) => {
       return type.name;
     });
     res.send(uploadTypes);

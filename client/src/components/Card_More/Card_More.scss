@@ -1,0 +1,183 @@
+.Card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  max-width: 500px;
+
+  //   width: calc(45% - 30px);
+
+  img {
+    height: 100px;
+  }
+  .name {
+    font-size: 45px;
+  }
+  .container_types {
+    display: flex;
+    .bars {
+      margin: 5px;
+      width: 50px;
+      padding: 5px;
+    }
+  }
+}
+.row {
+  width: 200px;
+  height: 200px;
+}
+.contenido {
+  margin: auto;
+  width: calc(25% - 30px);
+
+  min-width: 500px;
+  .info {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    .name {
+      width: 150px;
+      text-align: left;
+
+      font-size: 25px;
+    }
+  }
+
+  .linea {
+    margin-left: 13px;
+    height: 25px;
+    width: 100%;
+    background: lightgrey;
+    position: relative;
+  }
+}
+.green {
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: green;
+  }
+}
+
+.normal {
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: peru;
+  }
+}
+.fire {
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #f95757;
+  }
+}
+.bug {
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #9af99a;
+  }
+}
+.ground {
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: peru;
+  }
+}
+.grass {
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #9af99a;
+  }
+}
+.poison {
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: violet;
+  }
+}
+.flying {
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: lightblue;
+  }
+}
+.water {
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #a0a0f5;
+  }
+}
+.electric {
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: yellow;
+  }
+}
+.dark {
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgb(70, 70, 68);
+  }
+}
+.ice {
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #b9d5ef;
+  }
+}
+
+@for $i from 1 through 100 {
+  .stats-#{$i} {
+    &::before {
+      width: $i / 10 * 10%;
+    }
+  }
+}

@@ -1,0 +1,151 @@
+.card_pokemon {
+  margin: 2rem;
+  width: 190px;
+  height: 285px;
+  padding: 35px;
+  border: 1px solid;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  border: 0;
+  box-shadow: 9px 13px 21px -14px rgba(0, 0, 0, 0.86);
+  -webkit-box-shadow: 9px 13px 21px -14px rgba(0, 0, 0, 0.86);
+  -moz-box-shadow: 9px 13px 21px -14px rgba(0, 0, 0, 0.86);
+  // box-shadow: 9px -8px teal;
+  img {
+    transform: scale(1.2);
+  }
+  .Name_Pokemon {
+    font-size: 20px;
+    text-transform: capitalize;
+    color: white;
+    font-weight: bold;
+  }
+  .container_type {
+    display: flex;
+    justify-content: space-evenly;
+    .type {
+      border: 0;
+      margin: 5px;
+      width: 70px;
+      padding: 5px;
+      border-radius: 10px;
+      // border: 1px solid black;
+      box-shadow: 9px 13px 21px -14px rgba(0, 0, 0, 0.86);
+      -webkit-box-shadow: 9px 13px 21px -14px rgba(0, 0, 0, 0.86);
+      -moz-box-shadow: 9px 13px 21px -14px rgba(0, 0, 0, 0.86);
+    }
+    .normal {
+      background-color: peru;
+    }
+    .fire {
+      background-color: #f95757;
+    }
+    .bug {
+      background-color: #9af99a;
+    }
+    .ground {
+      background-color: peru;
+    }
+    .grass {
+      background-color: #9af99a;
+    }
+    .poison {
+      background-color: violet;
+    }
+    .flying {
+      background-color: lightblue;
+    }
+    .water {
+      background-color: #a0a0f5;
+    }
+    .electric {
+      background-color: yellow;
+    }
+    .dark {
+      background-color: rgb(70, 70, 68);
+    }
+    .ice {
+      background-color: #b9d5ef;
+    }
+    .fairy {
+      background-color: #a5a5bf;
+    }
+    .fighting {
+      background-color: #a23733;
+    }
+    .rock {
+      background-color: #b6a136;
+    }
+  }
+}
+.fire_bg {
+  background-color: #ee8130;
+  background: url(https://i.ytimg.com/vi/vHME8Osjmm4/maxresdefault.jpg)
+    no-repeat;
+  // background: url(https://cdn.wallpapersafari.com/63/42/Aq6G1F.jpg) no-repeat;
+
+  background-size: cover;
+  filter: blur(-1px);
+}
+.bug_bg {
+  background-color: #a6b91a;
+}
+.poison_bg {
+  background-color: #a33ea1;
+}
+.ground_bg {
+  background-color: #e2bf65;
+}
+.grass_bg {
+  background: url(https://media.discordapp.net/attachments/852620219730231340/872905897851117689/nLqXKl.png?width=1168&height=657)
+    no-repeat;
+  background-size: cover;
+  filter: blur(-1px);
+
+  background-color: #7ac74c;
+}
+.water_bg {
+  background-color: #6390f0;
+}
+.fighting_bg {
+  background-color: #c22e28;
+}
+.psychic_bg {
+  background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGjhOY2s3lKKCJh2zWIUAOaHcnmJcEUvroag&usqp=CAU)
+    no-repeat;
+  background-size: cover;
+  filter: blur(-1px);
+}
+.rock_bg {
+  background: url(https://c.wallhere.com/photos/4d/2e/stones_distance_sand-594181.jpg!d)
+    no-repeat bottom;
+  background-size: cover;
+  // background-color: #b6a136;
+}
+.ghost_bg {
+  background-color: #735797;
+}
+.ice_bg {
+  background-color: #96d9d6;
+}
+.dark_bg {
+  background-color: #212529;
+}
+.dragon_bg {
+  background-color: #6f35fc;
+}
+.fairy_bg {
+  background-color: #b7b7ce;
+}
+.flying_bg {
+  background-color: #a8a77a;
+}
+.electric_bg {
+  background-color: #f7d02c;
+}
+.normal_bg {
+  background-color: #a8a77a;
+}
