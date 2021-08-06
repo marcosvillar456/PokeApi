@@ -4,34 +4,28 @@ const { getpokemonsApi } = require("../Servicios/funciones");
 const { Pokemon, Type } = require("../db");
 const fetch = require("node-fetch");
 const { v4: uuidv4 } = require("uuid");
-
+const { Op } = require("sequelize");
 router.get("/", async (req, res) => {
-  const { type, name } = req.query;
-  const filtrados = [];
+  const { name } = req.query;
   const dbpokemons = await Pokemon.findAll({ include: Type }).then(
     (pokemon) => {
       return pokemon;
     }
   );
 
-  const allPokemons = await getpokemonsApi().then((res) => {
-    return res.concat(dbpokemons);
-  });
+  const pokemonsApi = await getpokemonsApi();
+  const allPokemons = pokemonsApi.concat(dbpokemons);
 
-  if (type) {
-    allPokemons.map((obj) =>
-      obj.types.map((typos) => {
-        if (typos.name === type) {
-          return filtrados.push(obj);
-        }
-      })
-    );
-    return res.status(200).send(filtrados);
-  } else if (name) {
-    const Search = allPokemons.filter((obj) => obj.name == name.toLowerCase());
-    return Search[0] ? res.send(Search[0]) : res.send("Error");
+  if (name) {
+    const Search = allPokemons.find((obj) => obj.name == name.toLowerCase());
+    if (Search) {
+      return res.json(Search);
+    } else {
+      res.send("error");
+    }
+  } else {
+    return res.json(allPokemons);
   }
-  return res.send(allPokemons);
 });
 
 router.get("/:idPokemon", async (req, res) => {
@@ -43,28 +37,25 @@ router.get("/:idPokemon", async (req, res) => {
         return res.json({
           name: pokemon.name,
           id: pokemon.id,
-          ImgDefrente: pokemon.sprites.front_default,
-
-          hp: pokemon.stats[0].base_stat,
-          attack: pokemon.stats[1].base_stat,
-          defense: pokemon.stats[2].base_stat,
-          special_attack: pokemon.stats[3].base_stat,
-          special_defense: pokemon.stats[4].base_stat,
+          img: pokemon.sprites.front_default,
+          life: pokemon.stats[0].base_stat,
+          force: pokemon.stats[1].base_stat,
+          defending: pokemon.stats[2].base_stat,
           speed: pokemon.stats[5].base_stat,
-          types: pokemon.types.map((info) => info.type.name),
-          height: pokemon.height,
-          weight: pokemon.weight,
+          types: pokemon.types.map((info) => {
+            return info.type.name;
+          }),
         });
       });
   } else {
-    await Pokemon.findAll({ include: Type })
-      .then((pokemon) => pokemon.filter((obj) => obj.id === id))
-      .then((dato) => {
-        return dato[0] ? res.status(200).json(dato) : res.send("error");
-      })
-      .catch(() => {
-        return res.send("Error de servidor");
-      });
+    const findDb = await Pokemon.findByPk(id, {
+      include: Type,
+    });
+    if (findDb) {
+      return res.json(findDb);
+    } else {
+      return res.send("Error de servidor");
+    }
   }
 });
 

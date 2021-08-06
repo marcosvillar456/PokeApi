@@ -1,57 +1,83 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Card from "../../components/Card/Cards";
 import "./Home.scss";
 import { Fragment } from "react";
-import { connect, useSelector } from "react-redux";
-import { getpokemons, get_types } from "../../redux/actions/index";
-
+import { connect } from "react-redux";
+import { get_types } from "../../redux/actions/index";
 import Types from "../../components/Types/Types";
 
 function Home(props) {
-  const [Loading, setLoading] = useState(false);
+  const [Pokemons, SetPokemons] = useState(props.pokemons);
 
-  useEffect(async () => {
-    async function GetPokemonsAndTypes() {
-      await props.getpokemons();
-      await props.get_types();
+  const handleChangeSelect = (e) => {
+    switch (e.target.value) {
+      case "Ordenar Por Mayor Fuerza":
+        let ordenarPorMayorrFuerza = [...props.pokemons].sort((a, b) =>
+          a.force < b.force ? 1 : a.force > b.force ? -1 : 0
+        );
+        return SetPokemons(ordenarPorMayorrFuerza);
+
+      case "Ordenar Por Menor Fuerza":
+        let ordenarPorMenorFuerza = [...props.pokemons].sort((a, b) =>
+          a.force > b.force ? 1 : a.force < b.force ? -1 : 0
+        );
+        return SetPokemons(ordenarPorMenorFuerza);
+
+      case "Ordenar Por Nombre":
+        let ordenarPorNombre = [...props.pokemons].sort(function (a, b) {
+          let n = a.name
+            .toLocaleLowerCase()
+            .localeCompare(b.name.toLocaleLowerCase());
+          return n;
+        });
+        return SetPokemons(ordenarPorNombre);
+
+      case "Volver orden original":
+        return SetPokemons(props.pokemons);
     }
-    GetPokemonsAndTypes().then(() => setLoading(true));
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  };
 
-  let Pokemons = useSelector((state) => state.pokemons);
+  return (
+    <Fragment>
+      <div className="Home">
+        <div className="options">
+          <div className="container_types">
+            <Types
+              types={props.types}
+              SetPokemons={SetPokemons}
+              Pokemons={Pokemons}
+            />
+            Orden
+            <select onChange={handleChangeSelect} defaultValue={"Ordenar por"}>
+              <option value="Buscar por" disabled>
+                Ordenar por
+              </option>
+              <option value="Ordenar Por Mayor Fuerza">Mayor Fuerza</option>
 
-  function ordenado() {
-    Pokemons.sort((a, b) => {
-      return a.force - b.force;
-    });
-  }
+              <option value="Ordenar Por Menor Fuerza">Menor Fuerza</option>
 
-  if (Loading === false) {
-    return <h1>loading...</h1>;
-  } else {
-    return (
-      <Fragment>
-        <button onClick={() => ordenado()}>alfabeticamente</button>
-        <div className="Home">
-          <div className="options">
-            <Types types={props.types} />
-          </div>
-          <div className="container_pokemons">
-            {Pokemons.map((pokemon) => {
-              return (
-                <Fragment key={pokemon.id}>
-                  <Card pokemon={pokemon} />
-                </Fragment>
-              );
-            })}
+              <option value="Ordenar Por Nombre">Alfabeticamente</option>
+
+              <option value="Volver orden original">orden original</option>
+            </select>
           </div>
         </div>
-      </Fragment>
-    );
-  }
+        <div className="container_pokemons">
+          {Pokemons.map((pokemon) => {
+            return (
+              <Fragment key={pokemon.id}>
+                <Card pokemon={pokemon} />
+              </Fragment>
+            );
+          })}
+        </div>
+      </div>
+    </Fragment>
+  );
 }
+
 const mapStateToProps = (state) => ({
   pokemons: state.pokemons,
   types: state.types,
 });
-export default connect(mapStateToProps, { getpokemons, get_types })(Home);
+export default connect(mapStateToProps, { get_types })(Home);

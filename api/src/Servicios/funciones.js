@@ -12,9 +12,7 @@ const getpokemonsApi = async () => {
       return await fetch(`${pokemon.url}`).then((res) => res.json());
     });
 
-    //como es una promesa le digo espera que se cumpla todo y ahi devolves algo
     const resultado = await Promise.all(promise);
-
     resultado.map((pokemon) =>
       datos.push({
         id: pokemon.id,
@@ -25,8 +23,8 @@ const getpokemonsApi = async () => {
         speed: pokemon.stats[5].base_stat,
         height: pokemon.height,
         weight: pokemon.weight,
-        types: pokemon.types.map((obj) => {
-          return { name: obj.type.name };
+        types: pokemon.types.map((info) => {
+          return info.type.name;
         }),
         img: pokemon.sprites.front_default,
       })
@@ -39,16 +37,11 @@ const getpokemonsApi = async () => {
 
 const getTypes = async () => {
   const types = [];
-  try {
-    const typesPokemon = await fetch(`https://pokeapi.co/api/v2/type/`)
-      .then((res) => res.json())
-      .then((res) => res.results);
-    typesPokemon.map((obj) => types.push({ name: obj.name }));
-    return types;
-  } catch (err) {
-    console.error(err);
-    next(err);
-  }
+  const typesPokemon = await fetch(`https://pokeapi.co/api/v2/type/`)
+    .then((res) => res.json())
+    .then((res) => res.results);
+  typesPokemon.map((obj) => types.push({ name: obj.name }));
+  return types;
 };
 
 const SearchPokemonById = async (id) => {

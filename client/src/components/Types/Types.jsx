@@ -1,52 +1,40 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import {
-  filterPokemons,
-  getpokemons,
-  order_alphabetically,
-} from "../../redux/actions/index";
+import { filterPokemons, getpokemons } from "../../redux/actions/index";
 import "./types.scss";
 
 function Types(props) {
   const handleChangeSelect = async (e) => {
-    props.filterPokemons(e.target.value);
+    props.filterPokemons(e.target.value, props.Pokemons);
+    props.SetPokemons(props.pokemonsType);
   };
 
-  function ordenar() {
-    props.pokemons.sort((a, b) => {
-      return a.force - b.force;
-    });
-  }
   return (
     <Fragment>
       <h1>Filter by</h1>
-      <div className="container_types">
-        Type
-        <select className="Types" required onChange={handleChangeSelect}>
-          <option defaultValue disabled>
-            Buscar por
-          </option>
-          {props.types.map((type) => {
-            return (
-              <option className={`button ${type}`} key={type} value={type}>
-                {type}
-              </option>
-            );
-          })}
-        </select>
-        <button onClick={() => props.getpokemons()}>All Pokemons</button>
-        <button onClick={() => ordenar()}>da</button>
-      </div>
+      Type
+      <select
+        className="Types"
+        onChange={handleChangeSelect}
+        defaultValue={"Buscar por"}
+      >
+        <option value="Buscar por" disabled>
+          Select type
+        </option>
+        {props.types.map((type) => {
+          return (
+            <option className={`button ${type}`} key={type} value={type}>
+              {type}
+            </option>
+          );
+        })}
+      </select>
     </Fragment>
   );
 }
 
-const mapStateToProps = (state) => ({
-  types: state.types,
-  pokemons: state.pokemons,
-});
+const mapStateToProps = (state) => ({ pokemonsType: state.pokemonsType });
 export default connect(mapStateToProps, {
   filterPokemons,
   getpokemons,
-  order_alphabetically,
 })(Types);

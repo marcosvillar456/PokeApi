@@ -5,8 +5,9 @@ import "./Card.scss";
 export default function Card({ pokemon }) {
   return (
     <Fragment key={pokemon.id}>
-      <div className={`card_pokemon ${pokemon.types[0].name}_bg`}>
+      <div className={`card_pokemon ${pokemon.types[0]}_bg`}>
         <img
+          // src={pokemon.img}
           src={`https://projectpokemon.org/images/normal-sprite/${pokemon.name}.gif`}
           onError={(e) => {
             e.target.errored = false;
@@ -21,8 +22,8 @@ export default function Card({ pokemon }) {
           <p className="Name_Pokemon">{pokemon.name}</p>
           <div className="container_type">
             {pokemon.types.map((nameType) => (
-              <div className={`type ${nameType.name}`} key={nameType.name}>
-                {nameType.name}
+              <div className={`type ${nameType}`} key={nameType}>
+                {nameType}
               </div>
             ))}
           </div>

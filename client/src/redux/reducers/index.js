@@ -4,12 +4,12 @@ import {
   SEARCHPOKEMONNAME,
   SEARCHPOKEMONID,
   GETTYPES,
-  ORDERALPHABETICALLY,
 } from "../actions/index";
 
 const initialState = {
   pokemons: [],
-  pokemonSearch: [],
+  pokemonsType: [],
+  pokemonSearch: {},
   types: [],
 };
 
@@ -35,13 +35,9 @@ function rootReducer(state = initialState, action) {
     case FILTERPOKEMONS:
       return {
         ...state,
-        pokemons: action.payload,
+        pokemonsType: action.payload,
       };
-    case ORDERALPHABETICALLY:
-      return {
-        ...state,
-        pokemons: action.payload,
-      };
+
     default:
       return state;
   }

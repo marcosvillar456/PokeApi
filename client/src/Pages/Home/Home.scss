@@ -19,6 +19,8 @@
     justify-content: space-around;
   }
   .options {
+    display: flex;
+    flex-direction: column;
     margin-left: -1rem;
     min-width: 250px;
   }

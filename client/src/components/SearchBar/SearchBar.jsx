@@ -39,7 +39,9 @@ function SearchBar() {
           required
         />
         <select onClick={handleChangeSelect} className="menu" required>
-          <option disabled>Buscar por</option>
+          <option disabled selected>
+            Search For
+          </option>
           <option defaultValue value="name">
             Name
           </option>

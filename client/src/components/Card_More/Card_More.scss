@@ -174,9 +174,10 @@
   }
 }
 
-@for $i from 1 through 100 {
+@for $i from 1 through 150 {
   .stats-#{$i} {
     &::before {
+      background-color: red;
       width: $i / 10 * 10%;
     }
   }
