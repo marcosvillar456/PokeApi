@@ -1,22 +1,26 @@
 import React, { useEffect } from "react";
-
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getpokemons, get_types } from "../../redux/actions/index";
-
+import "./Inicio.scss";
 function Inicio(props) {
-  useEffect(async () => {
+  useEffect(() => {
     async function GetPokemonsAndTypes() {
       await props.getpokemons();
       await props.get_types();
     }
-    await GetPokemonsAndTypes();
+    GetPokemonsAndTypes();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <Fragment>
-      <h1>Bienvenido</h1>
-      <Link to="/home">Inicio</Link>
+      <div className="Bienvenido">
+        <p className="Title">Bienvenido</p>
+        <button>
+          <Link to="/home">Inicio</Link>
+        </button>
+      </div>
     </Fragment>
   );
 }

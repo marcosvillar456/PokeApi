@@ -12,6 +12,9 @@
     align-items: center;
     .links {
       max-height: 80px;
+      display: flex;
+      align-items: center;
+      margin-left: 3rem;
       a {
         text-decoration: none;
         font-size: 20px;

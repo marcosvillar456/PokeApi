@@ -34,6 +34,9 @@ function Home(props) {
 
       case "Volver orden original":
         return SetPokemons(props.pokemons);
+
+      default:
+        return console.log("error");
     }
   };
 
@@ -65,7 +68,7 @@ function Home(props) {
         <div className="container_pokemons">
           {Pokemons.map((pokemon) => {
             return (
-              <Fragment key={pokemon.id}>
+              <Fragment key={pokemon.name}>
                 <Card pokemon={pokemon} />
               </Fragment>
             );

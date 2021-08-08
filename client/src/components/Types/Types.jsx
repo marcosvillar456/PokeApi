@@ -13,14 +13,11 @@ function Types(props) {
     <Fragment>
       <h1>Filter by</h1>
       Type
-      <select
-        className="Types"
-        onChange={handleChangeSelect}
-        defaultValue={"Buscar por"}
-      >
+      <select onChange={handleChangeSelect} defaultValue={"Buscar por"}>
         <option value="Buscar por" disabled>
           Select type
         </option>
+
         {props.types.map((type) => {
           return (
             <option className={`button ${type}`} key={type} value={type}>

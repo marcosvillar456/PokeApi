@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { Type } = require("../db");
-const { getTypes } = require("../Servicios/funciones");
+const { getTypes } = require("../Controllers/funciones");
 
 const router = Router();
 

@@ -22,7 +22,6 @@ function SearchBar() {
       e.preventDefault();
       history.push({
         pathname: `/home/Search/${name}`,
-        state: { buscarPor: optionsState },
       });
     }
   };
@@ -39,10 +38,7 @@ function SearchBar() {
           required
         />
         <select onClick={handleChangeSelect} className="menu" required>
-          <option disabled selected>
-            Search For
-          </option>
-          <option defaultValue value="name">
+          <option defaultValue selected value="name">
             Name
           </option>
           <option value="id">Id</option>

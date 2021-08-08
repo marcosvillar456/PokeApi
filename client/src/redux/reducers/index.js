@@ -4,6 +4,7 @@ import {
   SEARCHPOKEMONNAME,
   SEARCHPOKEMONID,
   GETTYPES,
+  UPLOADPOKEMONS,
 } from "../actions/index";
 
 const initialState = {
@@ -37,6 +38,8 @@ function rootReducer(state = initialState, action) {
         ...state,
         pokemonsType: action.payload,
       };
+    case UPLOADPOKEMONS:
+      return console.log(action.payload);
 
     default:
       return state;
