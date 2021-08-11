@@ -15,10 +15,11 @@
   }
   .container_types {
     display: flex;
-    .bars {
+    .type {
       margin: 5px;
-      width: 50px;
       padding: 5px;
+      height: 30px;
+      width: 30px;
     }
   }
 }
@@ -38,7 +39,6 @@
     .name {
       width: 150px;
       text-align: left;
-
       font-size: 25px;
     }
   }
@@ -49,16 +49,6 @@
     width: 100%;
     background: lightgrey;
     position: relative;
-  }
-}
-.green {
-  &::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: green;
   }
 }
 
@@ -172,11 +162,85 @@
     background: #b9d5ef;
   }
 }
+.normal {
+  background-image: url(../../img//Normal.png);
+  background-size: cover;
+}
+.shadow {
+  background-color: #4d3f5f;
+}
+.steel {
+  background-image: url(../../img//Steel.png);
+  background-size: cover;
+}
+.ghost {
+  background-image: url(../../img//Ghost.png);
+  background-size: cover;
+}
+.fairy {
+  background-image: url(../../img//Fairy.png);
+  background-size: cover;
+}
+.psychic {
+  background-image: url(../../img//Psychic.png);
+  background-size: cover;
+}
+.rock {
+  background-image: url(../../img//Rock.png);
+  background-size: cover;
+}
+.dragon {
+  background-image: url(../../img//Dragon.png);
+  background-size: cover;
+}
+.fighting {
+  background-image: url(../../img//Fighting.png);
+  background-size: cover;
+}
+.fire {
+  background-image: url(../../img//Fire.png);
+  background-size: cover;
+}
+.bug {
+  background-image: url(../../img//Icon_Bug.png);
+  background-size: cover;
+}
+.ground {
+  background-image: url(../../img//Ground.png);
+  background-size: cover;
+}
+.grass {
+  background-image: url(../../img//Grass.png);
+  background-size: cover;
+}
+.poison {
+  background-image: url(../../img//Poison.png);
+  background-size: cover;
+}
+.flying {
+  background-image: url(../../img//Flying.png);
+  background-size: cover;
+}
+.water {
+  background-image: url(../../img//Water.png);
+  background-size: cover;
+}
+.electric {
+  background-image: url(../../img//Electric.png);
+  background-size: cover;
+}
+.dark {
+  background-image: url(../../img//Dark.png);
+  background-size: cover;
+}
+.ice {
+  background-image: url(../../img//Ice.png);
+  background-size: cover;
+}
 
 @for $i from 1 through 150 {
   .stats-#{$i} {
     &::before {
-      background-color: red;
       width: $i / 10 * 10%;
     }
   }

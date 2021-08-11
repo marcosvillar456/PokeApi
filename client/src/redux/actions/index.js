@@ -54,7 +54,6 @@ export function filterPokemons(type, pokemons) {
 }
 export function UploadPokemon(
   name,
-
   life,
   force,
   defending,
@@ -77,8 +76,10 @@ export function UploadPokemon(
       img_DB,
     };
     const send = { ...body, type1: [type1, type2] };
-    const peticion = await axios.post("http://localhost:3001/pokemons", send);
-    const data = peticion;
-    dispatch({ type: UPLOADPOKEMONS, payload: data });
+    await axios.post("http://localhost:3001/pokemons", send);
+    const get = await axios.get("http://localhost:3001/pokemons");
+    const json = await get.data;
+
+    dispatch({ type: UPLOADPOKEMONS, payload: json });
   };
 }

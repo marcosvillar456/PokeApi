@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-
+import { useDispatch } from "react-redux";
 import { UploadPokemon } from "../../redux/actions";
-import { connect } from "react-redux";
 
-function Formulario(props) {
+export default function Formulario() {
   const [input, setInput] = useState({
     name: "",
     life: "",
@@ -16,6 +15,7 @@ function Formulario(props) {
     type1: "",
     type2: "",
   });
+  const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
     setInput({
@@ -25,18 +25,19 @@ function Formulario(props) {
   };
   const upload = (e) => {
     e.preventDefault();
-
-    props.UploadPokemon(
-      input.name,
-      input.life,
-      input.force,
-      input.defending,
-      input.speed,
-      input.heigth,
-      input.weight,
-      input.type1,
-      input.type2,
-      input.img_DB
+    dispatch(
+      UploadPokemon(
+        input.name,
+        input.life,
+        input.force,
+        input.defending,
+        input.speed,
+        input.heigth,
+        input.weight,
+        input.type1,
+        input.type2,
+        input.img_DB
+      )
     );
   };
   return (
@@ -121,7 +122,7 @@ function Formulario(props) {
       ></input>
       <input
         placeholder="img_DB"
-        type="file"
+        type="text"
         name="img_DB"
         onChange={handleInputChange}
         value={input.img_DB}
@@ -133,6 +134,3 @@ function Formulario(props) {
     </form>
   );
 }
-const mapStateToProps = () => ({});
-
-export default connect(mapStateToProps, { UploadPokemon })(Formulario);

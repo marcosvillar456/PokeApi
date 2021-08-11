@@ -1,86 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
+import { useSelector } from "react-redux";
+import Loading from "../../components/Loading/Loading";
 import Card from "../../components/Card/Cards";
-import "./Home.scss";
-import { Fragment } from "react";
-import { connect } from "react-redux";
-import { get_types } from "../../redux/actions/index";
+import Pagination from "../../components/Pagination/Pagination";
 import Types from "../../components/Types/Types";
+import Options from "../../components/options/options";
+import "./Home.scss";
 
-function Home(props) {
-  const [Pokemons, SetPokemons] = useState(props.pokemons);
+function Home() {
+  const pokemonsEstado = useSelector((state) => state.pokemons);
+  const types = useSelector((state) => state.types);
+  const [Pokemons, SetPokemons] = useState(pokemonsEstado);
+  const [CurrentPage, setCurrentPage] = useState(1);
+  const [PostsPerPage] = useState(12);
 
-  const handleChangeSelect = (e) => {
-    switch (e.target.value) {
-      case "Ordenar Por Mayor Fuerza":
-        let ordenarPorMayorrFuerza = [...props.pokemons].sort((a, b) =>
-          a.force < b.force ? 1 : a.force > b.force ? -1 : 0
-        );
-        return SetPokemons(ordenarPorMayorrFuerza);
+  const indexOfLastPost = CurrentPage * PostsPerPage;
+  const indexOfFirstPost = indexOfLastPost - PostsPerPage;
+  const currenPosts = Pokemons.slice(indexOfFirstPost, indexOfLastPost);
 
-      case "Ordenar Por Menor Fuerza":
-        let ordenarPorMenorFuerza = [...props.pokemons].sort((a, b) =>
-          a.force > b.force ? 1 : a.force < b.force ? -1 : 0
-        );
-        return SetPokemons(ordenarPorMenorFuerza);
+  if (!pokemonsEstado[0]) {
+    return <Loading />;
+  } else {
+    return (
+      <Fragment>
+        <Pagination
+          PostsPerPage={PostsPerPage}
+          totalPosts={Pokemons.length}
+          setCurrentPage={setCurrentPage}
+        />
 
-      case "Ordenar Por Nombre":
-        let ordenarPorNombre = [...props.pokemons].sort(function (a, b) {
-          let n = a.name
-            .toLocaleLowerCase()
-            .localeCompare(b.name.toLocaleLowerCase());
-          return n;
-        });
-        return SetPokemons(ordenarPorNombre);
+        <div className="Home">
+          <div className="options">
+            <h1>Filter by</h1>
+            <div className="container_options">
+              <Types
+                types={types}
+                SetPokemons={SetPokemons}
+                Pokemons={Pokemons}
+              />
+              Order by
+              <Options
+                Pokemons={Pokemons}
+                SetPokemons={SetPokemons}
+                pokemonsEstado={pokemonsEstado}
+              />
+            </div>
+          </div>
 
-      case "Volver orden original":
-        return SetPokemons(props.pokemons);
-
-      default:
-        return console.log("error");
-    }
-  };
-
-  return (
-    <Fragment>
-      <div className="Home">
-        <div className="options">
-          <div className="container_types">
-            <Types
-              types={props.types}
-              SetPokemons={SetPokemons}
-              Pokemons={Pokemons}
-            />
-            Orden
-            <select onChange={handleChangeSelect} defaultValue={"Ordenar por"}>
-              <option value="Buscar por" disabled>
-                Ordenar por
-              </option>
-              <option value="Ordenar Por Mayor Fuerza">Mayor Fuerza</option>
-
-              <option value="Ordenar Por Menor Fuerza">Menor Fuerza</option>
-
-              <option value="Ordenar Por Nombre">Alfabeticamente</option>
-
-              <option value="Volver orden original">orden original</option>
-            </select>
+          <div className="container_pokemons">
+            {currenPosts.map((pokemon) => {
+              return (
+                <Fragment key={pokemon.name}>
+                  <Card pokemon={pokemon} />
+                </Fragment>
+              );
+            })}
           </div>
         </div>
-        <div className="container_pokemons">
-          {Pokemons.map((pokemon) => {
-            return (
-              <Fragment key={pokemon.name}>
-                <Card pokemon={pokemon} />
-              </Fragment>
-            );
-          })}
-        </div>
-      </div>
-    </Fragment>
-  );
+      </Fragment>
+    );
+  }
 }
 
-const mapStateToProps = (state) => ({
-  pokemons: state.pokemons,
-  types: state.types,
-});
-export default connect(mapStateToProps, { get_types })(Home);
+export default Home;

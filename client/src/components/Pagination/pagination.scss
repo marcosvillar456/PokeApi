@@ -1,0 +1,10 @@
+.pagination {
+  display: grid;
+  place-content: center;
+  .container_nums {
+    display: flex;
+    li {
+      margin: 1px;
+    }
+  }
+}

@@ -4,28 +4,19 @@ const { getpokemonsApi } = require("../Controllers/funciones");
 const { Pokemon, Type } = require("../db");
 const { v4: uuidv4 } = require("uuid");
 const axios = require("axios");
-const validate = require("uuid-validate");
 
 router.get("/", async (req, res, next) => {
   try {
     const { name } = req.query;
-    const dbpokemons = await Pokemon.findAll({ include: Type }).then(
-      (pokemon) => {
-        return pokemon;
-      }
-    );
-
-    //disculpame dios pero no anduvo
-
+    const dbpokemons = await Pokemon.findAll({ include: Type });
     const pokemonsApi = await getpokemonsApi();
     const allPokemons = pokemonsApi.concat(dbpokemons);
-
     if (name) {
       const Search = allPokemons.find((obj) => obj.name == name.toLowerCase());
       if (Search) {
         return res.json(Search);
       } else {
-        res.send("error");
+        return res.send("error");
       }
     } else {
       return res.json(allPokemons);
@@ -38,7 +29,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:idPokemon", async (req, res, next) => {
   let id = req.params.idPokemon;
   try {
-    if (validate(id)) {
+    if (id.length < 6) {
       const peticion = await axios.get(
         `https://pokeapi.co/api/v2/pokemon/${id}`
       );
@@ -55,7 +46,7 @@ router.get("/:idPokemon", async (req, res, next) => {
           return { name: info.type.name };
         }),
       };
-      res.send(Pokemons);
+      return res.send(Pokemons);
     } else {
       const findDb = await Pokemon.findByPk(id, {
         include: Type,
@@ -63,7 +54,7 @@ router.get("/:idPokemon", async (req, res, next) => {
       if (findDb) {
         return res.json(findDb);
       } else {
-        return res.send("No se Encontro boludito");
+        return res.send("No se Encontro el pokemon");
       }
     }
   } catch (err) {

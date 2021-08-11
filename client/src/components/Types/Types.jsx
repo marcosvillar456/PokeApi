@@ -1,24 +1,38 @@
 import React, { Fragment } from "react";
-import { connect } from "react-redux";
-import { filterPokemons, getpokemons } from "../../redux/actions/index";
+import { useSelector } from "react-redux";
 import "./types.scss";
 
-function Types(props) {
+export default function Types({ SetPokemons }) {
+  const pokemons = useSelector((state) => state.pokemons);
+  const Types = useSelector((state) => state.types);
   const handleChangeSelect = async (e) => {
-    props.filterPokemons(e.target.value, props.Pokemons);
-    props.SetPokemons(props.pokemonsType);
+    //tuve que hacer esto para que no surga el bug de que el estado sea los pokemons filtrados
+
+    SetPokemons(pokemons);
+    let pokemonsFiltrados = [];
+    if (e.target.value === "all") {
+      return SetPokemons(pokemons);
+    } else {
+      await pokemons.map((pokemon) =>
+        pokemon.types.forEach((type) => {
+          if (type.name === e.target.value) {
+            return pokemonsFiltrados.push(pokemon);
+          }
+        })
+      );
+      return SetPokemons(pokemonsFiltrados);
+    }
   };
 
   return (
     <Fragment>
-      <h1>Filter by</h1>
       Type
       <select onChange={handleChangeSelect} defaultValue={"Buscar por"}>
         <option value="Buscar por" disabled>
           Select type
         </option>
-
-        {props.types.map((type) => {
+        <option>all</option>
+        {Types?.map((type) => {
           return (
             <option className={`button ${type}`} key={type} value={type}>
               {type}
@@ -29,9 +43,3 @@ function Types(props) {
     </Fragment>
   );
 }
-
-const mapStateToProps = (state) => ({ pokemonsType: state.pokemonsType });
-export default connect(mapStateToProps, {
-  filterPokemons,
-  getpokemons,
-})(Types);

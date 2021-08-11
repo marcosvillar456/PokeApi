@@ -16,8 +16,8 @@
   flex-direction: column;
   // box-shadow: 9px -8px teal;
   img {
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
   }
   .Name_Pokemon {
     font-size: 20px;
@@ -29,140 +29,169 @@
     display: flex;
     justify-content: space-evenly;
     .type {
-      border: 0;
       margin: 5px;
-      width: 70px;
       padding: 5px;
-      border-radius: 10px;
-      // border: 1px solid black;
-      box-shadow: 9px 13px 21px -14px rgba(0, 0, 0, 0.86);
-      -webkit-box-shadow: 9px 13px 21px -14px rgba(0, 0, 0, 0.86);
-      -moz-box-shadow: 9px 13px 21px -14px rgba(0, 0, 0, 0.86);
+      height: 30px;
+      width: 30px;
+      // border: 0;
+      // width: 70px;
+      // border-radius: 10px;
+      // // border: 1px solid black;
+      // box-shadow: 9px 13px 21px -14px rgba(0, 0, 0, 0.86);
+      // -webkit-box-shadow: 9px 13px 21px -14px rgba(0, 0, 0, 0.86);
+      // -moz-box-shadow: 9px 13px 21px -14px rgba(0, 0, 0, 0.86);
     }
     .normal {
-      background-color: peru;
+      background-image: url(../../img//Normal.png);
+      background-size: cover;
     }
     .shadow {
       background-color: #4d3f5f;
     }
     .steel {
-      background-color: #545e60;
+      background-image: url(../../img//Steel.png);
+      background-size: cover;
     }
     .ghost {
-      background-color: #735797;
+      background-image: url(../../img//Ghost.png);
+      background-size: cover;
     }
     .fairy {
-      background-color: #b7b7ce;
+      background-image: url(../../img//Fairy.png);
+      background-size: cover;
     }
     .psychic {
-      background-color: #f95587;
+      background-image: url(../../img//Psychic.png);
+      background-size: cover;
     }
     .rock {
-      background-color: #b6a136;
+      background-image: url(../../img//Rock.png);
+      background-size: cover;
     }
     .dragon {
-      background-color: #6f35fc;
+      background-image: url(../../img//Dragon.png);
+      background-size: cover;
     }
     .fighting {
-      background-color: #a23733;
+      background-image: url(../../img//Fighting.png);
+      background-size: cover;
     }
     .fire {
-      background-color: #f95757;
+      background-image: url(../../img//Fire.png);
+      background-size: cover;
     }
     .bug {
-      background-color: #9af99a;
+      background-image: url(../../img//Icon_Bug.png);
+      background-size: cover;
     }
     .ground {
-      background-color: peru;
+      background-image: url(../../img//Ground.png);
+      background-size: cover;
     }
     .grass {
-      background-color: #9af99a;
+      background-image: url(../../img//Grass.png);
+      background-size: cover;
     }
     .poison {
-      background-color: violet;
+      background-image: url(../../img//Poison.png);
+      background-size: cover;
     }
     .flying {
-      background-color: lightblue;
+      background-image: url(../../img//Flying.png);
+      background-size: cover;
     }
     .water {
-      background-color: #a0a0f5;
+      background-image: url(../../img//Water.png);
+      background-size: cover;
     }
     .electric {
-      background-color: yellow;
+      background-image: url(../../img//Electric.png);
+      background-size: cover;
     }
     .dark {
-      background-color: rgb(70, 70, 68);
+      background-image: url(../../img//Dark.png);
+      background-size: cover;
     }
     .ice {
-      background-color: #b9d5ef;
+      background-image: url(../../img//Ice.png);
+      background-size: cover;
     }
   }
 }
-.fire_bg {
-  background-color: #ee8130;
-  background: url(https://i.ytimg.com/vi/vHME8Osjmm4/maxresdefault.jpg)
-    no-repeat;
-  // background: url(https://cdn.wallpapersafari.com/63/42/Aq6G1F.jpg) no-repeat;
-
+.steel_bg {
+  background: url(../../backgrounds//Steel.png);
   background-size: cover;
-  filter: blur(-1px);
 }
+
 .bug_bg {
-  background-color: #a6b91a;
+  background: url(../../backgrounds//Bug.png);
+  background-size: cover;
 }
 .poison_bg {
-  background-color: #a33ea1;
+  background: url(../../backgrounds//Poison.png);
+  background-size: cover;
 }
 .ground_bg {
-  background-color: #e2bf65;
+  background: url(../../backgrounds//Ground.png);
+  background-size: cover;
 }
 .grass_bg {
-  background: url(https://media.discordapp.net/attachments/852620219730231340/872905897851117689/nLqXKl.png?width=1168&height=657)
-    no-repeat;
-  background-size: cover;
-  filter: blur(-1px);
+  // background: url(https://media.discordapp.net/attachments/852620219730231340/872905897851117689/nLqXKl.png?width=1168&height=657);
+  background: url(../../backgrounds//Grass.png);
 
-  background-color: #7ac74c;
+  background-size: cover;
 }
 .water_bg {
-  background-color: #6390f0;
-}
-.fighting_bg {
-  background-color: #c22e28;
-}
-.psychic_bg {
-  background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGjhOY2s3lKKCJh2zWIUAOaHcnmJcEUvroag&usqp=CAU)
-    no-repeat;
+  background: url(../../backgrounds//Water.png);
   background-size: cover;
-  filter: blur(-1px);
+}
+
+.psychic_bg {
+  background: url(../../backgrounds//Psychic.png);
+  background-size: cover;
 }
 .rock_bg {
-  background: url(https://c.wallhere.com/photos/4d/2e/stones_distance_sand-594181.jpg!d)
-    no-repeat bottom;
+  background: url(../../backgrounds//Rock.png);
   background-size: cover;
-  // background-color: #b6a136;
 }
 .ghost_bg {
-  background-color: #735797;
+  background: url(../../backgrounds//Ghost.png);
+  background-size: cover;
 }
 .ice_bg {
-  background-color: #96d9d6;
+  background: url(../../backgrounds//Ice.png);
+  background-size: cover;
 }
 .dark_bg {
-  background-color: #212529;
+  background: url(../../backgrounds//Dark.png);
+  background-size: cover;
 }
 .dragon_bg {
-  background-color: #6f35fc;
+  background: url(../../backgrounds//Dragon.png);
+  background-size: cover;
 }
 .fairy_bg {
-  background-color: #b7b7ce;
+  background: url(../../backgrounds//Fairy.png);
+  background-size: cover;
+}
+.fire_bg {
+  // background: url(https://i.ytimg.com/vi/vHME8Osjmm4/maxresdefault.jpg);
+  background: url(../../backgrounds//Fire.png);
+  background-size: cover;
 }
 .flying_bg {
-  background-color: #a8a77a;
+  background: url(../../backgrounds//Flying.png);
+  background-size: cover;
+}
+.fighting_bg {
+  background: url(../../backgrounds//Fighting.png);
+  background-size: cover;
 }
 .electric_bg {
-  background-color: #f7d02c;
+  background: url(../../backgrounds//Electric.png);
+  background-size: cover;
 }
 .normal_bg {
-  background-color: #a8a77a;
+  background: url(../../backgrounds//Normal.png);
+  background-size: cover;
 }
