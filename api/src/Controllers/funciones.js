@@ -1,5 +1,4 @@
 const fetch = require("node-fetch");
-const axios = require("axios");
 
 const getpokemonsApi = async () => {
   try {
@@ -18,11 +17,15 @@ const getpokemonsApi = async () => {
       datos.push({
         id: pokemon.id,
         name: pokemon.name,
+        life: pokemon.stats[0].base_stat,
         force: pokemon.stats[1].base_stat,
+        defending: pokemon.stats[2].base_stat,
+        speed: pokemon.stats[5].base_stat,
         types: pokemon.types.map((info) => {
           return { name: info.type.name };
         }),
-        img: pokemon.sprites.front_default,
+        img: pokemon.sprites.versions["generation-v"]["black-white"].animated
+          .front_default,
       })
     );
     return datos;

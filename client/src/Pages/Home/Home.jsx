@@ -11,11 +11,11 @@ function Home() {
   const pokemonsEstado = useSelector((state) => state.pokemons);
   const types = useSelector((state) => state.types);
   const [Pokemons, SetPokemons] = useState(pokemonsEstado);
-  const [CurrentPage, setCurrentPage] = useState(1);
-  const [PostsPerPage] = useState(12);
+  const [PaginaActual, setPaginaActual] = useState(1);
+  const [PokemonsPorPagina] = useState(12);
 
-  const indexOfLastPost = CurrentPage * PostsPerPage;
-  const indexOfFirstPost = indexOfLastPost - PostsPerPage;
+  const indexOfLastPost = PaginaActual * PokemonsPorPagina;
+  const indexOfFirstPost = indexOfLastPost - PokemonsPorPagina;
   const currenPosts = Pokemons.slice(indexOfFirstPost, indexOfLastPost);
 
   if (!pokemonsEstado[0]) {
@@ -24,9 +24,9 @@ function Home() {
     return (
       <Fragment>
         <Pagination
-          PostsPerPage={PostsPerPage}
+          PokemonsPorPagina={PokemonsPorPagina}
           totalPosts={Pokemons.length}
-          setCurrentPage={setCurrentPage}
+          setPaginaActual={setPaginaActual}
         />
 
         <div className="Home">
@@ -34,6 +34,7 @@ function Home() {
             <h1>Filter by</h1>
             <div className="container_options">
               <Types
+                setPaginaActual={setPaginaActual}
                 types={types}
                 SetPokemons={SetPokemons}
                 Pokemons={Pokemons}

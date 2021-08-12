@@ -12,17 +12,30 @@ export default function More_Name(props) {
   useEffect(() => {
     dispatch(getPokemonByName(props.match.params.name));
   }, [props.match.params.name]); // eslint-disable-line react-hooks/exhaustive-deps
-  if (pokemonSearch.name != props.match.params.name) {
+
+  if (pokemonSearch === "error") {
     return (
       <Fragment>
-        <Loading />
+        <h1>Pokemon no Encontrado</h1>
+        <img
+          src="https://c.tenor.com/4Z18Fj-efDIAAAAC/what-pokemon.gif"
+          alt="error"
+        />
       </Fragment>
     );
-  } else {
-    return (
-      <Fragment>
-        <CardMore pokemon={pokemonSearch} />
-      </Fragment>
-    );
+  } else if (pokemonSearch != "error") {
+    if (`${pokemonSearch.name}` !== `${props.match.params.name}`) {
+      return (
+        <Fragment>
+          <Loading />
+        </Fragment>
+      );
+    } else {
+      return (
+        <Fragment>
+          <CardMore pokemon={pokemonSearch} />
+        </Fragment>
+      );
+    }
   }
 }

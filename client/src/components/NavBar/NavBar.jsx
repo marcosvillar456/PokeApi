@@ -3,14 +3,13 @@ import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import "./NavBar.scss";
 import $ from "jquery";
-
-import "./NavBarfunctions";
 import "./NavBar.scss";
+
 export default function NavBar() {
   let contador = 0;
   function menu() {
     $("nav").toggle();
-    if (contador == 1) {
+    if (contador === 1) {
       $("nav").css("display", "block");
       $("nav").animate({
         left: "-100%",
@@ -28,9 +27,9 @@ export default function NavBar() {
     <Fragment>
       <header>
         <div className="menu_bar">
-          <a className="bt-menu" onClick={() => menu()}>
+          <h5 className="bt-menu" onClick={() => menu()}>
             <span className="icon-list2"></span>Menu
-          </a>
+          </h5>
         </div>
         <nav className="nav">
           <ul>

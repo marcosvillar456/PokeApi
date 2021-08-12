@@ -31,6 +31,12 @@ export default function Options({ Pokemons, SetPokemons, pokemonsEstado }) {
         });
         return SetPokemons(Z_A);
 
+      case "nuestros":
+        let nuestros = [...Pokemons].filter((pokemon) => {
+          return pokemon.id.length !== undefined;
+        });
+        return SetPokemons(nuestros);
+
       case "Volver orden original":
         return SetPokemons(pokemonsEstado);
 
@@ -39,7 +45,7 @@ export default function Options({ Pokemons, SetPokemons, pokemonsEstado }) {
     }
   };
   return (
-    <select onChange={handleChangeSelect} defaultValue={"Ordenar por"}>
+    <select onChange={handleChangeSelect} defaultValue="Ordenar por">
       <option value="Buscar por" disabled>
         Ordenar por
       </option>
@@ -48,6 +54,7 @@ export default function Options({ Pokemons, SetPokemons, pokemonsEstado }) {
       <option value="Ordenar Por Mayor Fuerza">Mayor Fuerza</option>
       <option value="Ordenar Por Menor Fuerza">Menor Fuerza</option>
       <option value="Volver orden original">orden original</option>
+      <option value="nuestros">nuestros</option>
     </select>
   );
 }

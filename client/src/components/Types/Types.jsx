@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 import "./types.scss";
 
-export default function Types({ SetPokemons }) {
+export default function Types({ SetPokemons, setPaginaActual }) {
   const pokemons = useSelector((state) => state.pokemons);
   const Types = useSelector((state) => state.types);
   const handleChangeSelect = async (e) => {
@@ -20,6 +20,7 @@ export default function Types({ SetPokemons }) {
           }
         })
       );
+      setPaginaActual(1);
       return SetPokemons(pokemonsFiltrados);
     }
   };

@@ -7,9 +7,10 @@ export default function Card({ pokemon }) {
   return (
     <Fragment key={pokemon.id}>
       <Link to={`/home/Search/${pokemon.id}`}>
-        <div className={`card_pokemon ${pokemon.types[0].name}_bg`}>
+        <div className={`card_pokemon ${pokemon.types[0]?.name}_bg`}>
           <img
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pokemon.id}.gif`}
+            src={pokemon.img}
+            // src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pokemon.id}.gif`}
             alt={pokemon.name}
           />
           <div>

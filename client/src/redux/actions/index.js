@@ -62,7 +62,7 @@ export function UploadPokemon(
   weight,
   type1,
   type2,
-  img_DB
+  img
 ) {
   return async function (dispatch) {
     const body = {
@@ -73,7 +73,7 @@ export function UploadPokemon(
       speed,
       heigth,
       weight,
-      img_DB,
+      img,
     };
     const send = { ...body, type1: [type1, type2] };
     await axios.post("http://localhost:3001/pokemons", send);

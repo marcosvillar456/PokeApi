@@ -36,7 +36,7 @@ module.exports = function (sequelize) {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    img_DB: {
+    img: {
       type: DataTypes.TEXT,
       allowNull: false,
     },

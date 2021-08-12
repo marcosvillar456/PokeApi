@@ -37,7 +37,8 @@ router.get("/:idPokemon", async (req, res, next) => {
       const Pokemons = {
         name: Data.name,
         id: Data.id,
-        img: Data.sprites.front_default,
+        img: Data.sprites.versions["generation-v"]["black-white"].animated
+          .front_default,
         life: Data.stats[0].base_stat,
         force: Data.stats[1].base_stat,
         defending: Data.stats[2].base_stat,
@@ -66,17 +67,9 @@ router.post("/", async (req, res, next) => {
   try {
     const id = uuidv4();
     let data = { ...req.body };
-    const {
-      name,
-      life,
-      force,
-      defending,
-      speed,
-      heigth,
-      weight,
-      type1,
-      img_DB,
-    } = data;
+    const { name, life, force, defending, speed, heigth, weight, type1, img } =
+      data;
+
     const UploadPokemon = await Pokemon.create({
       id,
       name,
@@ -86,7 +79,7 @@ router.post("/", async (req, res, next) => {
       speed,
       heigth,
       weight,
-      img_DB,
+      img,
     });
     await UploadPokemon.addTypes(type1);
     return res.send(UploadPokemon);

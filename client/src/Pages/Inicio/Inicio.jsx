@@ -7,7 +7,7 @@ import "./Inicio.scss";
 export default function Inicio() {
   const dispatch = useDispatch();
 
-  useEffect(async () => {
+  useEffect(() => {
     function GetPokemonsAndTypes() {
       dispatch(get_types());
       dispatch(getpokemons());

@@ -1,15 +1,15 @@
 import "./pagination.scss";
 export default function Pagination({
-  PostsPerPage,
+  PokemonsPorPagina,
   totalPosts,
-  setCurrentPage,
+  setPaginaActual,
 }) {
   const PageNumbers = [];
-  for (let i = 1; i <= Math.ceil(totalPosts / PostsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalPosts / PokemonsPorPagina); i++) {
     PageNumbers.push(i);
   }
   function paginate(PageNumber) {
-    setCurrentPage(PageNumber);
+    setPaginaActual(PageNumber);
   }
   return (
     <nav className="pagination">

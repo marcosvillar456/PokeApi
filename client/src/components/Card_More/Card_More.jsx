@@ -7,7 +7,7 @@ function CardMore({ pokemon }) {
     <Fragment>
       <div>
         <div className="Card" key={pokemon.id}>
-          <h1>id:{pokemon.id}</h1>
+          <h4>id:{pokemon.id}</h4>
           <div>
             <div className="name">{pokemon.name}</div>
             <div className="container_types">
@@ -21,10 +21,7 @@ function CardMore({ pokemon }) {
           </div>
 
           <div>
-            <img
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pokemon.id}.gif`}
-              alt={pokemon.name}
-            />
+            <img src={`${pokemon.img}`} alt={pokemon.name} />
           </div>
         </div>
         <h1>stats</h1>

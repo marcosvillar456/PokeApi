@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  justify-content: space-evenly;
+
+  h4 {
+    margin: 10px 0px 10px 0px;
+  }
+}
+.stats_pokemon {
+  width: 215px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  input {
+    width: 70px;
+    height: 20px;
+  }
+}
+#pokeball {
+  width: 150px;
+  width: 150px;
+
+  animation-name: mianimacion;
+  animation-duration: 4s;
+  position: relative;
+}
+@keyframes mianimacion {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+//   0% {
+//     left: 0px;
+//     transform: rotate(45deg);
+//   }
+//   25% {
+//     left: 50px;
+//     transform: rotate(65deg);
+//   }
+//   50% {
+//     left: 100px;
+//     transform: rotate(85deg);
+//   }
+//   75% {
+//     left: 150px;
+//     transform: rotate(105deg);
+//   }
+//   100% {
+//     left: 200px;
+//     transform: rotate(150deg);
+//   }
