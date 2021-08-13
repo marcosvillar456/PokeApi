@@ -162,6 +162,18 @@
     background: #b9d5ef;
   }
 }
+
+.psychic {
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #f95587;
+  }
+}
+
 .normal {
   background-image: url(../../img//Normal.png);
   background-size: cover;
@@ -238,10 +250,25 @@
   background-size: cover;
 }
 
-@for $i from 1 through 150 {
+@for $i from 1 through 300 {
   .stats-#{$i} {
     &::before {
-      width: $i / 10 * 10%;
+      width: $i / 15 * 10%;
+    }
+  }
+}
+@media (max-width: 700px) {
+  .Card {
+    flex-direction: column;
+  }
+  .contenido {
+    width: 60vw !important;
+    min-width: 0;
+    .info {
+      flex-direction: column;
+      .name {
+        place-self: center;
+      }
     }
   }
 }

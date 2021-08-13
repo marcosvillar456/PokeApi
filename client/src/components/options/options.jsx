@@ -1,44 +1,29 @@
-export default function Options({ Pokemons, SetPokemons, pokemonsEstado }) {
+import { useDispatch } from "react-redux";
+import {
+  Z_A,
+  A_Z,
+  High_To_Low,
+  Low_To_High,
+  Our_Pokemons,
+} from "../../redux/actions";
+export default function Options() {
+  const dispatch = useDispatch();
   const handleChangeSelect = (e) => {
     switch (e.target.value) {
-      case "Ordenar Por Mayor Fuerza":
-        let ordenarPorMayorrFuerza = [...Pokemons].sort((a, b) =>
-          a.force < b.force ? 1 : a.force > b.force ? -1 : 0
-        );
-        return SetPokemons(ordenarPorMayorrFuerza);
+      case "High To Low Force":
+        return dispatch(High_To_Low());
 
-      case "Ordenar Por Menor Fuerza":
-        let ordenarPorMenorFuerza = [...Pokemons].sort((a, b) =>
-          a.force > b.force ? 1 : a.force < b.force ? -1 : 0
-        );
-        return SetPokemons(ordenarPorMenorFuerza);
+      case "Low To High Force":
+        return dispatch(Low_To_High());
 
       case "A-Z":
-        let A_Z = [...Pokemons].sort(function (a, b) {
-          let n = a.name
-            .toLocaleLowerCase()
-            .localeCompare(b.name.toLocaleLowerCase());
-          return n;
-        });
-        return SetPokemons(A_Z);
+        return dispatch(A_Z());
 
       case "Z-A":
-        let Z_A = [...Pokemons].sort(function (a, b) {
-          let n = b.name
-            .toLocaleLowerCase()
-            .localeCompare(a.name.toLocaleLowerCase());
-          return n;
-        });
-        return SetPokemons(Z_A);
+        return dispatch(Z_A());
 
-      case "nuestros":
-        let nuestros = [...Pokemons].filter((pokemon) => {
-          return pokemon.id.length !== undefined;
-        });
-        return SetPokemons(nuestros);
-
-      case "Volver orden original":
-        return SetPokemons(pokemonsEstado);
+      case "Our Pokemons":
+        return dispatch(Our_Pokemons());
 
       default:
         return console.log("error");
@@ -51,10 +36,9 @@ export default function Options({ Pokemons, SetPokemons, pokemonsEstado }) {
       </option>
       <option value="A-Z">A-Z</option>
       <option value="Z-A">Z-A</option>
-      <option value="Ordenar Por Mayor Fuerza">Mayor Fuerza</option>
-      <option value="Ordenar Por Menor Fuerza">Menor Fuerza</option>
-      <option value="Volver orden original">orden original</option>
-      <option value="nuestros">nuestros</option>
+      <option value="High To Low Force">High To Low Force</option>
+      <option value="Low To High Force">Low To High Force</option>
+      <option value="Our Pokemons">Our Pokemons</option>
     </select>
   );
 }

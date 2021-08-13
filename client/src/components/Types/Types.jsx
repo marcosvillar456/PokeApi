@@ -1,27 +1,18 @@
 import React, { Fragment } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { Pokemons_types, All_Pokemons } from "../../redux/actions";
 import "./types.scss";
 
-export default function Types({ SetPokemons, setPaginaActual }) {
-  const pokemons = useSelector((state) => state.pokemons);
+export default function Types() {
+  const dispatch = useDispatch();
+
   const Types = useSelector((state) => state.types);
   const handleChangeSelect = async (e) => {
     //tuve que hacer esto para que no surga el bug de que el estado sea los pokemons filtrados
-
-    SetPokemons(pokemons);
-    let pokemonsFiltrados = [];
     if (e.target.value === "all") {
-      return SetPokemons(pokemons);
+      return dispatch(All_Pokemons());
     } else {
-      await pokemons.map((pokemon) =>
-        pokemon.types.forEach((type) => {
-          if (type.name === e.target.value) {
-            return pokemonsFiltrados.push(pokemon);
-          }
-        })
-      );
-      setPaginaActual(1);
-      return SetPokemons(pokemonsFiltrados);
+      return dispatch(Pokemons_types(e.target.value));
     }
   };
 
@@ -32,7 +23,7 @@ export default function Types({ SetPokemons, setPaginaActual }) {
         <option value="Buscar por" disabled>
           Select type
         </option>
-        <option>all</option>
+        <option value="all">all</option>
         {Types?.map((type) => {
           return (
             <option className={`button ${type}`} key={type} value={type}>

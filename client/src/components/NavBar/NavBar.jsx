@@ -2,51 +2,41 @@ import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import "./NavBar.scss";
-import $ from "jquery";
 import "./NavBar.scss";
 
 export default function NavBar() {
-  let contador = 0;
-  function menu() {
-    $("nav").toggle();
-    if (contador === 1) {
-      $("nav").css("display", "block");
-      $("nav").animate({
-        left: "-100%",
-      });
-      contador = 0;
+  function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
     } else {
-      $("nav").css("display", "block");
-      contador = 1;
-      $("nav").animate({
-        left: "-0%",
-      });
+      x.className = "topnav";
     }
   }
   return (
     <Fragment>
-      <header>
-        <div className="menu_bar">
-          <h5 className="bt-menu" onClick={() => menu()}>
-            <span className="icon-list2"></span>Menu
-          </h5>
-        </div>
-        <nav className="nav">
-          <ul>
-            <li>
-              <Link to="/home">Home</Link>
-            </li>
-            <li>
-              <Link to="/home/Crear_Pokemon">Crear Pokemon</Link>
-            </li>
-            <li style={{ padding: "20px", marginLeft: "auto" }}>
-              <div>
-                <SearchBar />
-              </div>
-            </li>
-          </ul>
-        </nav>
-      </header>
+      <div className="topnav" id="myTopnav">
+        <h1>
+          <img
+            src="https://image.flaticon.com/icons/png/512/528/528101.png"
+            alt="pokeball"
+            width="30px"
+          ></img>
+        </h1>
+        <h1>
+          <Link to="/home">Home</Link>
+        </h1>
+        <h1>
+          <Link to="/home/Crear_Pokemon">Crear Pokemon</Link>
+        </h1>
+        <h1 className="rigth">
+          <SearchBar />
+        </h1>
+
+        <h1 className="icon" onClick={() => myFunction()}>
+          <i className="fa fa-bars"></i>
+        </h1>
+      </div>
     </Fragment>
   );
 }

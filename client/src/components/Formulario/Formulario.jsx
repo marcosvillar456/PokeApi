@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Fragment } from "react";
-import pokeball from "../../img/pngegg.png";
 import { useDispatch, useSelector } from "react-redux";
 import { UploadPokemon } from "../../redux/actions";
 import "../Card_More/Card_More.scss";
@@ -33,7 +32,6 @@ export default function Formulario() {
 
   const upload = (e) => {
     e.preventDefault();
-
     dispatch(
       UploadPokemon(
         input.name,
@@ -188,15 +186,6 @@ export default function Formulario() {
           <br />
           <button type="submit">Crear</button>
         </form>
-
-        <div>
-          <img
-            id="pokeball"
-            src={pokeball}
-            style={{ zIndex: "0", width: "100px" }}
-          ></img>
-          <img src={`${input.img}`} alt="" style={{ width: "100px" }} />
-        </div>
       </div>
     </Fragment>
   );
