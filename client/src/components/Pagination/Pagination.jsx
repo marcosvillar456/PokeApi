@@ -58,18 +58,14 @@ export default function Pagination({
     <Fragment>
       <div className="paginate">
         <ul className="pageNumbers">
-          <li>
-            <button
-              onClick={handlePrevbtn}
-              disabled={PaginaActual === PageNumbers[0] ? true : false}
-            >
+          <li onClick={handlePrevbtn}>
+            <button disabled={PaginaActual === PageNumbers[0] ? true : false}>
               Prev
             </button>
           </li>
-          {renderPageNumber}{" "}
-          <li>
+          {renderPageNumber}
+          <li onClick={handleNextbtn}>
             <button
-              onClick={handleNextbtn}
               disabled={
                 PaginaActual === PageNumbers[PageNumbers.length - 1]
                   ? true

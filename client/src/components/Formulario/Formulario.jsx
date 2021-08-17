@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { UploadPokemon } from "../../redux/actions";
+import { getpokemons, UploadPokemon } from "../../redux/actions";
 import "../Card_More/Card_More.scss";
 import "./Formulario.scss";
 export default function Formulario() {
@@ -30,10 +30,10 @@ export default function Formulario() {
     });
   };
 
-  const upload = (e) => {
+  const upload = async (e) => {
     e.preventDefault();
     dispatch(
-      UploadPokemon(
+      await UploadPokemon(
         input.name,
         input.life,
         input.force,
@@ -46,6 +46,8 @@ export default function Formulario() {
         input.img
       )
     );
+    dispatch(getpokemons());
+    alert("pokemon creado");
   };
   return (
     <Fragment>

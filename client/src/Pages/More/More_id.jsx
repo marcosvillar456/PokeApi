@@ -13,7 +13,7 @@ export default function MoreId(props) {
     dispatch(getPokemonById(props.match.params.id));
   }, [props.match.params.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (pokemonSearch.id != props.match.params.id) {
+  if (`${pokemonSearch.id}` !== `${props.match.params.id}`) {
     return (
       <Fragment>
         <Loading />

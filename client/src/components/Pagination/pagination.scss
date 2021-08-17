@@ -24,10 +24,10 @@
   color: white;
   cursor: pointer;
 }
-.pageNumbers li button:hover {
-  background-color: white;
-  color: black;
+.pageNumbers li:hover {
+  background-color: #c33e54a6;
 }
+
 .pageNumbers li button:focus {
   outline: none;
 }

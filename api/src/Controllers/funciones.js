@@ -4,7 +4,7 @@ const getpokemonsApi = async () => {
   try {
     //pido a la url los pokemons
     let datos = [];
-    const pokemons = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=50`)
+    const pokemons = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=500`)
       .then((res) => res.json())
       .then((res) => res);
     //mapeo y hago peticion a la url que me dio la anterior peticion para obtener mas datos aparte del nombre

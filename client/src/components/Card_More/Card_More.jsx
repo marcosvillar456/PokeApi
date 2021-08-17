@@ -5,7 +5,7 @@ import { Fragment } from "react";
 function CardMore({ pokemon }) {
   return (
     <Fragment>
-      <div>
+      <div className="container_card">
         <div className="Card" key={pokemon.id}>
           <h4>id:{pokemon.id}</h4>
           <div>

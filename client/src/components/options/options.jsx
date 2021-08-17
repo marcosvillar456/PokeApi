@@ -1,39 +1,58 @@
-import { useDispatch } from "react-redux";
-import {
-  Z_A,
-  A_Z,
-  High_To_Low,
-  Low_To_High,
-  Our_Pokemons,
-} from "../../redux/actions";
-export default function Options() {
-  const dispatch = useDispatch();
+export default function Options({ SetPokemons, pokemons, setPaginaActual }) {
   const handleChangeSelect = (e) => {
     switch (e.target.value) {
       case "High To Low Force":
-        return dispatch(High_To_Low());
+        let High_To_Low_Force = [...pokemons].sort((a, b) =>
+          a.force < b.force ? 1 : a.force > b.force ? -1 : 0
+        );
+        setPaginaActual(1);
+        return SetPokemons(High_To_Low_Force);
 
       case "Low To High Force":
-        return dispatch(Low_To_High());
+        let Low_To_High_Force = [...pokemons].sort((a, b) =>
+          a.force > b.force ? 1 : a.force < b.force ? -1 : 0
+        );
+        setPaginaActual(1);
+        return SetPokemons(Low_To_High_Force);
 
       case "A-Z":
-        return dispatch(A_Z());
+        let A_Z = [...pokemons].sort(function (a, b) {
+          let n = a.name
+            .toLocaleLowerCase()
+            .localeCompare(b.name.toLocaleLowerCase());
+          return n;
+        });
+        setPaginaActual(1);
+        return SetPokemons(A_Z);
 
       case "Z-A":
-        return dispatch(Z_A());
+        let Z_A = [...pokemons].sort(function (a, b) {
+          let n = b.name
+            .toLocaleLowerCase()
+            .localeCompare(a.name.toLocaleLowerCase());
+          return n;
+        });
+        setPaginaActual(1);
+        return SetPokemons(Z_A);
 
       case "Our Pokemons":
-        return dispatch(Our_Pokemons());
+        let Our_Pokemons = [...pokemons].filter((pokemon) => {
+          return pokemon.id.length !== undefined;
+        });
+        setPaginaActual(1);
+        return SetPokemons(Our_Pokemons);
 
       default:
         return console.log("error");
     }
   };
+
   return (
     <select onChange={handleChangeSelect} defaultValue="Ordenar por">
       <option value="Buscar por" disabled>
         Ordenar por
       </option>
+
       <option value="A-Z">A-Z</option>
       <option value="Z-A">Z-A</option>
       <option value="High To Low Force">High To Low Force</option>

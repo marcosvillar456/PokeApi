@@ -1,25 +1,29 @@
-.Card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: auto;
-  max-width: 500px;
+@import "../ColorsAndImg.scss";
 
-  //   width: calc(45% - 30px);
-
-  img {
-    height: 100px;
-  }
-  .name {
-    font-size: 25px;
-  }
-  .container_types {
+.container_card {
+  margin-top: 8vw;
+  .Card {
     display: flex;
-    .type {
-      margin: 5px;
-      padding: 5px;
-      height: 30px;
-      width: 30px;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    max-width: 500px;
+
+    img {
+      height: 100px;
+    }
+    .name {
+      font-size: 25px;
+    }
+    .container_types {
+      display: flex;
+      justify-content: center;
+      .type {
+        margin: 5px;
+        padding: 5px;
+        height: 30px;
+        width: 30px;
+      }
     }
   }
 }
@@ -53,201 +57,225 @@
 }
 
 .normal {
-  &::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: peru;
-  }
-}
-.fire {
-  &::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: #f95757;
-  }
-}
-.bug {
-  &::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: #9af99a;
-  }
-}
-.ground {
-  &::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: peru;
-  }
-}
-.grass {
-  &::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: #9af99a;
-  }
-}
-.poison {
-  &::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: violet;
-  }
-}
-.flying {
-  &::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: lightblue;
-  }
-}
-.water {
-  &::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: #a0a0f5;
-  }
-}
-.electric {
-  &::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: yellow;
-  }
-}
-.dark {
-  &::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: rgb(70, 70, 68);
-  }
-}
-.ice {
-  &::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: #b9d5ef;
-  }
-}
-
-.psychic {
-  &::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: #f95587;
-  }
-}
-
-.normal {
-  background-image: url(../../img//Normal.png);
+  background-image: $Img_Type_normal;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_normal;
+  }
 }
 .shadow {
   background-color: #4d3f5f;
 }
 .steel {
-  background-image: url(../../img//Steel.png);
+  background-image: $Img_Type_steel;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_steel;
+  }
 }
 .ghost {
-  background-image: url(../../img//Ghost.png);
+  background-image: $Img_Type_ghost;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_ghost;
+  }
 }
 .fairy {
-  background-image: url(../../img//Fairy.png);
+  background-image: $Img_Type_fairy;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_fairy;
+  }
 }
 .psychic {
-  background-image: url(../../img//Psychic.png);
+  background-image: $Img_Type_psychic;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_psychic;
+  }
 }
+
 .rock {
-  background-image: url(../../img//Rock.png);
+  background-image: $Img_Type_rock;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_rock;
+  }
 }
 .dragon {
-  background-image: url(../../img//Dragon.png);
+  background-image: $Img_Type_dragon;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_dragon;
+  }
 }
 .fighting {
-  background-image: url(../../img//Fighting.png);
+  background-image: $Img_Type_fighting;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_fighting;
+  }
 }
+
 .fire {
-  background-image: url(../../img//Fire.png);
+  background-image: $Img_Type_fire;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_fire;
+  }
 }
 .bug {
-  background-image: url(../../img//Icon_Bug.png);
+  background-image: $Img_Type_bug;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_bug;
+  }
 }
 .ground {
-  background-image: url(../../img//Ground.png);
+  background-image: $Img_Type_ground;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_ground;
+  }
 }
 .grass {
-  background-image: url(../../img//Grass.png);
+  background-image: $Img_Type_grass;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_grass;
+  }
 }
 .poison {
-  background-image: url(../../img//Poison.png);
+  background-image: $Img_Type_poison;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_poison;
+  }
 }
 .flying {
-  background-image: url(../../img//Flying.png);
+  background-image: $Img_Type_flying;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_flying;
+  }
 }
 .water {
-  background-image: url(../../img//Water.png);
+  background-image: $Img_Type_water;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_water;
+  }
 }
 .electric {
-  background-image: url(../../img//Electric.png);
+  background-image: $Img_Type_electric;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_electric;
+  }
 }
 .dark {
-  background-image: url(../../img//Dark.png);
+  background-image: $Img_Type_dark;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_dark;
+  }
 }
 .ice {
-  background-image: url(../../img//Ice.png);
+  background-image: $Img_Type_ice;
   background-size: cover;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: $color_ice;
+  }
 }
 
 @for $i from 1 through 300 {
@@ -260,10 +288,16 @@
 @media (max-width: 700px) {
   .Card {
     flex-direction: column;
+
+    img {
+      margin-top: 2rem;
+    }
   }
   .contenido {
     width: 60vw !important;
     min-width: 0;
+    margin-top: 2rem;
+
     .info {
       flex-direction: column;
       .name {

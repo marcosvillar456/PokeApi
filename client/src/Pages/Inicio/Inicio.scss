@@ -3,6 +3,19 @@
   margin: auto;
 }
 .Bienvenido {
+  display: flex;
   height: 100%;
-  margin: 0;
+  background: url(https://cutewallpaper.org/21/pokemon-gif-wallpaper/Purple-Eared-Pikachu-Animation-by-moxie2D-Pikachu-art-.gif)
+    center;
+  background-size: cover;
+  justify-content: space-around;
+  align-content: center;
+  flex-wrap: wrap;
+  button {
+    a {
+      font-size: 20px;
+      text-decoration: none;
+      color: black !important;
+    }
+  }
 }

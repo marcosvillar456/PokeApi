@@ -23,7 +23,7 @@ export default function More_Name(props) {
         />
       </Fragment>
     );
-  } else if (pokemonSearch != "error") {
+  } else if (pokemonSearch !== "error") {
     if (`${pokemonSearch.name}` !== `${props.match.params.name}`) {
       return (
         <Fragment>

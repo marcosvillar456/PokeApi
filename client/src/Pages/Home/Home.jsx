@@ -11,7 +11,7 @@ import "./Home.scss";
 
 function Home() {
   const dispatch = useDispatch();
-  const pokemonsEstado = useSelector((state) => state.pokemons);
+  const pokemonsEstado = useSelector((state) => state.pokemons2);
   const types = useSelector((state) => state.types);
 
   if (!types[2] && !pokemonsEstado[2]) {
@@ -57,13 +57,12 @@ function Home() {
           <div className="container_options">
             <Types
               setPaginaActual={setPaginaActual}
-              types={types}
               SetPokemons={SetPokemons}
-              Pokemons={Pokemons}
             />
             Order by
             <Options
-              Pokemons={Pokemons}
+              setPaginaActual={setPaginaActual}
+              pokemons={Pokemons}
               SetPokemons={SetPokemons}
               pokemonsEstado={pokemonsEstado}
             />

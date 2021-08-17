@@ -17,11 +17,14 @@ export default function NavBar() {
     <Fragment>
       <div className="topnav" id="myTopnav">
         <h1>
-          <img
-            src="https://image.flaticon.com/icons/png/512/528/528101.png"
-            alt="pokeball"
-            width="30px"
-          ></img>
+          <Link to="/home">
+            <img
+              style={{ float: "left" }}
+              src="https://image.flaticon.com/icons/png/512/528/528101.png"
+              alt="pokeball"
+              width="30px"
+            ></img>
+          </Link>
         </h1>
         <h1>
           <Link to="/home">Home</Link>
@@ -29,9 +32,9 @@ export default function NavBar() {
         <h1>
           <Link to="/home/Crear_Pokemon">Crear Pokemon</Link>
         </h1>
-        <h1 className="rigth">
+        <h3>
           <SearchBar />
-        </h1>
+        </h3>
 
         <h1 className="icon" onClick={() => myFunction()}>
           <i className="fa fa-bars"></i>

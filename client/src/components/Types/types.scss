@@ -1,3 +1,5 @@
+@import "../ColorsAndImg.scss";
+
 .container_options {
   max-width: 250px;
   display: flex;
@@ -10,9 +12,7 @@
   }
   .button {
     border: 0;
-
     margin: 10px;
-    // border: 1px solid;
     padding: 5px;
     border-radius: 10px;
     width: 50px;
@@ -22,60 +22,60 @@
   }
 
   .normal {
-    background-color: peru;
+    background-color: $color_normal;
   }
   .shadow {
     background-color: #4d3f5f;
   }
   .steel {
-    background-color: #545e60;
+    background-color: $color_steel;
   }
   .ghost {
-    background-color: #735797;
+    background-color: $color_ghost;
   }
   .fairy {
-    background-color: #b7b7ce;
+    background-color: $color_fairy;
   }
   .psychic {
-    background-color: #f95587;
+    background-color: $color_psychic;
   }
   .rock {
-    background-color: #b6a136;
+    background-color: $color_rock;
   }
   .dragon {
-    background-color: #6f35fc;
+    background-color: $color_dragon;
   }
   .fighting {
-    background-color: #a23733;
+    background-color: $color_fighting;
   }
   .fire {
-    background-color: #f95757;
+    background-color: $color_fire;
   }
   .bug {
-    background-color: #9af99a;
+    background-color: $color_bug;
   }
   .ground {
-    background-color: peru;
+    background-color: $color_ground;
   }
   .grass {
-    background-color: #9af99a;
+    background-color: $color_grass;
   }
   .poison {
-    background-color: violet;
+    background-color: $color_poison;
   }
   .flying {
-    background-color: lightblue;
+    background-color: $color_flying;
   }
   .water {
-    background-color: #a0a0f5;
+    background-color: $color_water;
   }
   .electric {
-    background-color: yellow;
+    background-color: $color_electric;
   }
   .dark {
-    background-color: rgb(70, 70, 68);
+    background-color: $color_dark;
   }
   .ice {
-    background-color: #b9d5ef;
+    background-color: $color_ice;
   }
 }
