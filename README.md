@@ -18,7 +18,7 @@
 
 
 
-#### Tecnologías necesarias:
+#### Tecnologías Utilizadas:
 
 - [ X ] React
 - [ X ] Redux
